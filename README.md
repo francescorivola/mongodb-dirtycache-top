@@ -15,6 +15,24 @@ The usage documentation can be found running the tool with the help flag:
 
     $ node index.js --help
 
+Output:
+
+```
+Usage: index [options]
+
+MongoDB tool to list collections with dirtiest WiredTiger cache.
+
+Options:
+  -V, --version              output the version number
+  -h, --host [value]         Set host (required)
+  -u, --username [value]     Set username (required)
+  -p, --password [value]     Set password (required)
+  -d, --database [value]     Set database (required)
+  -c, --collections [value]  Set collections name separated by comma. If not specified will inspect all database collections
+  -i, --interval <n>         Set refresh interval in milliseconds (default: 1000)
+  -h, --help                 output usage information
+```
+
 ## License
 
 MIT
