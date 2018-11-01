@@ -21,7 +21,7 @@ async function run() {
     const db = client.db(database);
     const admin = db.admin();
 
-    const collectionsName = collections.length === 0 ? await getAllDatabaseCollectionNames(db) : collections;
+    const collectionsName = !collections ? await getAllDatabaseCollectionNames(db) : collections;
     const colls = collectionsName.map(c => db.collection(c));
 
     async function runAtInterval() {
