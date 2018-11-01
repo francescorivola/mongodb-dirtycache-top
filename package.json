@@ -1,10 +1,13 @@
 {
   "name": "mongodb-dirtycache-top",
   "version": "0.0.1",
-  "description": "MongoDB tool to list collections with dirtiest WiredTiger cache",
+  "description": "MongoDB tool to list collections with dirtiest WiredTiger cache.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ."
+  },
+  "engines" : { 
+    "node" : ">=8.11.1" 
   },
   "author": "Francesco Rivola",
   "license": "MIT",
