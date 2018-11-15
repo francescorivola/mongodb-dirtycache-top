@@ -1,6 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const program = require('commander');
 const packageJson = require('./package.json');
+const prettyBytes = require('pretty-bytes');
 
 program
   .version(packageJson.version)
@@ -14,6 +15,8 @@ program
   .parse(process.argv);
 
 const { host, username, password, database, collections, interval } = program;
+
+const format = n => (isNaN(n) ? n : prettyBytes(n)).padStart(15, ' ');
 
 async function run() {
     const url = `mongodb://${username}:${encodeURIComponent(password)}@${host}:27017`;
@@ -54,7 +57,7 @@ async function run() {
             })
             .sort((a, b) => a.totalDirty > b.totalDirty ? -1 : a.totalDirty < b.totalDirty ? 1 : 0)
             .filter(s => s.totalDirty > 0)
-            .forEach(s => console.log(`${s.ns.padEnd(40, ' ')}${s.totalDirty.toString().padStart(15, ' ')}${s.dataDirty.toString().padStart(15, ' ')}${s.indexDirty.toString().padStart(15, ' ')}`));
+            .forEach(s => console.log(`${s.ns.padEnd(40, ' ')}${format(s.totalDirty)}${format(s.dataDirty)}${format(s.indexDirty)}`));
             console.log(''.padEnd(85, '-'));
         }
  catch (error) {
