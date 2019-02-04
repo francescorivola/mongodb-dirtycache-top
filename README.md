@@ -1,5 +1,7 @@
 # mongodb-dirtycache-top
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/francescorivola/mongodb-dirtycache-top.svg)](https://greenkeeper.io/)
+
 [ ![CodeFactor](https://www.codefactor.io/repository/github/francescorivola/mongodb-dirtycache-top/badge)](https://www.codefactor.io/repository/github/francescorivola/mongodb-dirtycache-top)
 
 MongoDB tool to list collections with dirtiest WiredTiger cache.
