@@ -1,4 +1,7 @@
 # mongodb-dirtycache-top
+
+[ ![CodeFactor](https://www.codefactor.io/repository/github/francescorivola/mongodb-dirtycache-top/badge)](https://www.codefactor.io/repository/github/francescorivola/mongodb-dirtycache-top)
+
 MongoDB tool to list collections with dirtiest WiredTiger cache.
 
 Similar to [mongotop](https://docs.mongodb.com/manual/reference/program/mongotop), this tool shows which database collections have the highest value in bytes of the WiredTiger dirty cache.
