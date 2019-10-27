@@ -20,7 +20,10 @@ const format = n => (isNaN(n) ? n : prettyBytes(n)).padStart(15, ' ');
 
 async function run() {
     const url = `mongodb://${username}:${encodeURIComponent(password)}@${host}:27017`;
-    const client = await MongoClient.connect(url);
+    const client = await MongoClient.connect(url, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
     const db = client.db(database);
     const admin = db.admin();
 
