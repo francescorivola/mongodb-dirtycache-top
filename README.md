@@ -1,5 +1,6 @@
 # mongodb-dirtycache-top
 
+[ ![Npm Version](https://badge.fury.io/js/mongodb-dirtycache-top.svg)](https://www.npmjs.com/package/mongodb-dirtycache-top)
 [![Actions Status](https://github.com/francescorivola/mongodb-dirtycache-top/workflows/Node%20CI/badge.svg)](https://github.com/francescorivola/mongodb-dirtycache-top/actions)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=francescorivola/mongodb-dirtycache-top)](https://dependabot.com)
 [![CodeFactor](https://www.codefactor.io/repository/github/francescorivola/mongodb-dirtycache-top/badge)](https://www.codefactor.io/repository/github/francescorivola/mongodb-dirtycache-top)
