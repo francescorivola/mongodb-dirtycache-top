@@ -11,7 +11,7 @@ Similar to [mongotop](https://docs.mongodb.com/manual/reference/program/mongotop
 
 ## Installation
 
-Clone this repository and run the following command inside the project root folder:
+Install NodeJs than install it using npm:
 
     $ npm install mongodb-dirtycache-top -g
 
