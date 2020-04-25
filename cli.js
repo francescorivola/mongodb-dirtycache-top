@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const MongoClient = require('mongodb').MongoClient;
 const program = require('commander');
 const packageJson = require('./package.json');
@@ -6,20 +8,21 @@ const prettyBytes = require('pretty-bytes');
 program
   .version(packageJson.version)
   .description(packageJson.description)
-  .option('-h, --host [value]', 'Set host (required)')
-  .option('-u, --username [value]', 'Set username (required)')
-  .option('-p, --password [value]', 'Set password (required)')
-  .option('-d, --database [value]', 'Set database (required)')
+  .requiredOption('-h, --host [value]', 'Set host (required)')
+  .option('-p, --port [value]', 'Set port', Number, 27017)
+  .requiredOption('-u, --username [value]', 'Set username (required)')
+  .requiredOption('-p, --password [value]', 'Set password (required)')
+  .requiredOption('-d, --database [value]', 'Set database (required)')
   .option('-c, --collections [value]', 'Set collections name separated by comma. If not specified will inspect all database collections', (value) => value.split(','))
   .option('-i, --interval <n>', 'Set refresh interval in milliseconds', Number, 1000)
   .parse(process.argv);
 
-const { host, username, password, database, collections, interval } = program;
+const { host, port, username, password, database, collections, interval } = program;
 
 const format = n => (isNaN(n) ? n : prettyBytes(n)).padStart(15, ' ');
 
 async function run() {
-    const url = `mongodb://${username}:${encodeURIComponent(password)}@${host}:27017`;
+    const url = `mongodb://${username}:${encodeURIComponent(password)}@${host}:${port}`;
     const client = await MongoClient.connect(url, {
         useUnifiedTopology: true,
         useNewUrlParser: true
