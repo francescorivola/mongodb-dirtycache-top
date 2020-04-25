@@ -65,8 +65,7 @@ async function run() {
             .filter(s => s.totalDirty > 0)
             .forEach(s => console.log(`${s.ns.padEnd(40, ' ')}${format(s.totalDirty)}${format(s.dataDirty)}${format(s.indexDirty)}`));
             console.log(''.padEnd(85, '-'));
-        }
- catch (error) {
+        } catch (error) {
             console.error(error);
             process.exit(1);
         }
