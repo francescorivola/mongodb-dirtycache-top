@@ -6,6 +6,7 @@ const packageJson = require('./package.json');
 const prettyBytes = require('pretty-bytes');
 
 program
+  .name(packageJson.name)
   .version(packageJson.version)
   .description(packageJson.description)
   .requiredOption('-h, --host [value]', 'Set host (required)')
