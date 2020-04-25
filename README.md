@@ -12,30 +12,31 @@ Similar to [mongotop](https://docs.mongodb.com/manual/reference/program/mongotop
 
 Clone this repository and run the following command inside the project root folder:
 
-    $ npm install
+    $ npm install mongodb-dirtycache-top -g
 
 ## Usage
 
 The usage documentation can be found running the tool with the help flag:
 
-    $ node index.js --help
+    $ mongodb-dirtycache-top --help
 
 Output:
 
 ```
-Usage: index [options]
+Usage: mongodb-dirtycache-top [options]
 
 MongoDB tool to list collections with dirtiest WiredTiger cache.
 
 Options:
   -V, --version              output the version number
   -h, --host [value]         Set host (required)
+  -p, --port [value]         Set port (default: 27017)
   -u, --username [value]     Set username (required)
   -p, --password [value]     Set password (required)
   -d, --database [value]     Set database (required)
   -c, --collections [value]  Set collections name separated by comma. If not specified will inspect all database collections
   -i, --interval <n>         Set refresh interval in milliseconds (default: 1000)
-  -h, --help                 output usage information
+  --help                     display help for command
 ```
 
 ## License
