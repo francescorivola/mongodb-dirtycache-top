@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const MongoClient = require('mongodb').MongoClient;
-const program = require('commander');
+const { MongoClient } = require('mongodb');
+const { program } = require('commander');
 const packageJson = require('./package.json');
 const prettyBytes = require('pretty-bytes');
 
@@ -9,25 +9,30 @@ program
   .name(packageJson.name)
   .version(packageJson.version)
   .description(packageJson.description)
-  .requiredOption('-h, --host [value]', 'Set host (required)')
+  .option('-h, --host [value]', 'Set host', String, 'localhost')
   .option('-p, --port [value]', 'Set port', Number, 27017)
-  .requiredOption('-u, --username [value]', 'Set username (required)')
-  .requiredOption('-p, --password [value]', 'Set password (required)')
+  .option('-u, --username [value]', 'Set username')
+  .option('-p, --password [value]', 'Set password')
   .requiredOption('-d, --database [value]', 'Set database (required)')
   .option('-c, --collections [value]', 'Set collections name separated by comma. If not specified will inspect all database collections', (value) => value.split(','))
   .option('-i, --interval <n>', 'Set refresh interval in milliseconds', Number, 1000)
   .parse(process.argv);
 
-const { host, port, username, password, database, collections, interval } = program;
+const { host, port, username, password, database, collections, interval } = program.opts();
 
 const format = n => (isNaN(n) ? n : prettyBytes(n)).padStart(15, ' ');
 
 async function run() {
-    const url = `mongodb://${username}:${encodeURIComponent(password)}@${host}:${port}`;
-    const client = await MongoClient.connect(url, {
-        useUnifiedTopology: true,
-        useNewUrlParser: true
+    const url = `mongodb://${host}:${port}`;
+    const client = new MongoClient(url, {
+        ...((username && password) ? {
+            auth: {
+                username,
+                password
+            }
+        } : {})
     });
+    await client.connect();
     const db = client.db(database);
     const admin = db.admin();
 

@@ -5,17 +5,3 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: eslint
-    versions:
-    - 7.18.0
-    - 7.21.0
-    - 7.22.0
-    - 7.24.0
-  - dependency-name: mongodb
-    versions:
-    - 3.6.5
-  - dependency-name: commander
-    versions:
-    - 7.0.0
-    - 7.1.0
