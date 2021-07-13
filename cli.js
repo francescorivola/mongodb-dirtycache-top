@@ -10,7 +10,7 @@ program
   .version(packageJson.version)
   .description(packageJson.description)
   .option('-h, --host [value]', 'Set host', String, 'localhost')
-  .option('-p, --port [value]', 'Set port', Number, 27017)
+  .option('-P, --port [value]', 'Set port', Number, 27017)
   .option('-u, --username [value]', 'Set username')
   .option('-p, --password [value]', 'Set password')
   .requiredOption('-d, --database [value]', 'Set database (required)')
@@ -24,14 +24,13 @@ const format = n => (isNaN(n) ? n : prettyBytes(n)).padStart(15, ' ');
 
 async function run() {
     const url = `mongodb://${host}:${port}`;
-    const client = new MongoClient(url, {
-        ...((username && password) ? {
+    const client = new MongoClient(url, Object.assign({},
+        (username && password) ? {
             auth: {
                 username,
                 password
             }
-        } : {})
-    });
+        } : {}));
     await client.connect();
     const db = client.db(database);
     const admin = db.admin();
