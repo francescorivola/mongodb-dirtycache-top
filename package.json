@@ -12,7 +12,7 @@
   "author": "Francesco Rivola",
   "license": "MIT",
   "dependencies": {
-    "commander": "^8.0.0",
+    "commander": "^9.2.0",
     "mongodb": "^4.0.0",
     "pretty-bytes": "^5.3.0"
   },
